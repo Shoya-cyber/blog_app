@@ -30,7 +30,7 @@ services:
     image: phpmyadmin/phpmyadmin:5.1.1
     restart: always
     ports:
-      - 8890:8890
+      - 8890:80
     environment:
       - "PMA_HOST=${DB_HOST_NAME}"
       - "PMA_USER=root"
