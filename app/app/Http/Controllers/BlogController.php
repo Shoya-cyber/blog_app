@@ -22,4 +22,24 @@ class BlogController extends Controller
             ['blogs' => $blogs]
         );
     }
+    /**
+     * ブログ詳細を表示する
+     *
+     * @param int $id
+     * @return view
+     */
+
+    public function showDetail($id)
+    {
+        $blog = Blog::find($id);
+
+        if (is_null($blog)) {
+            return redirect(route('blogs'))->with('err_msg', 'データがありません。');
+        }
+
+        return view(
+            'blog.detail',
+            ['blog' => $blog]
+        );
+    }
 }
