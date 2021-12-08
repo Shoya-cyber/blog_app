@@ -124,4 +124,26 @@ class BlogController extends Controller
         }
         return redirect(route('blogs'))->with('err_msg', 'ブログを更新しました');
     }
+
+    /**
+     * ブログ削除
+     *
+     * @param int $id
+     * @return view
+     */
+
+    public function exeDelete($id)
+    {
+        if (empty($id)) {
+            return redirect(route('blogs'))->with('err_msg', 'データがありません。');
+        }
+
+        try {
+            //ブログを削除
+            Blog::destroy($id);
+        } catch (\Throwable $e) {
+            abort(500);
+        }
+        return redirect(route('blogs'))->with('err_msg', '削除しました。');
+    }
 }
