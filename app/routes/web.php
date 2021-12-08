@@ -27,3 +27,8 @@ Route::post('/blog/store', [BlogController::class, 'exeStore'])
 // ブログ詳細画面を表示
 Route::get('/blog/{id}', [BlogController::class, 'showDetail'])
   ->name('show');
+// ブログ編集画面を表示
+Route::get('/blog/edit/{id}', [BlogController::class, 'showEdit'])
+  ->name('edit');
+Route::post('/blog/update', [BlogController::class, 'exeUpdate'])
+  ->name('update');
